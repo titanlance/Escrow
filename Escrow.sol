@@ -58,13 +58,7 @@ contract Escrow {
     // @notice Find out how much is left to fullfill the Escrow to say it's funded.
     // @dev This is used to determine if the contract amount has been fullfilled and return how much is left to be fullfilled. 
     function dueAmount() public view returns (uint256) {
-        uint256 anyFunds = address(this).balance;
-        
-        if(anyFunds != 0) {
-            anyFunds = address(this).balance - contractTotal;
-        } 
-        
-        return anyFunds;
+        return address(this).balance - contractTotal;
     }
     
     // @notice Validator can request the funds to be released once determined it's safe to do.
